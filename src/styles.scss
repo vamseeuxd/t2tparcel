@@ -1,1 +1,155 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #3f51b5;
+  --primary-dark: #303f9f;
+  --primary-light: #c5cae9;
+  --accent-color: #ff4081;
+}
+
+.light-theme {
+  --bg-color: #fafafa;
+  --surface-color: #ffffff;
+  --text-color: #212121;
+  --text-muted: #6c757d;
+  --border-color: rgba(63, 81, 181, 0.2);
+}
+
+.dark-theme {
+  --bg-color: #121212;
+  --surface-color: #1e1e1e;
+  --text-color: #ffffff;
+  --text-muted: #adb5bd;
+  --border-color: rgba(255, 255, 255, 0.2);
+}
+
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card {
+  background-color: var(--surface-color) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.form-control {
+  background-color: var(--surface-color) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+.form-control:focus {
+  background-color: var(--surface-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--text-color) !important;
+  box-shadow: 0 0 0 0.2rem rgba(63, 81, 181, 0.25) !important;
+}
+
+.form-label {
+  color: var(--text-color) !important;
+}
+
+.table {
+  color: var(--text-color) !important;
+}
+
+.table td, .table th {
+  border-color: var(--border-color) !important;
+}
+
+.navbar {
+  background-color: var(--primary-color) !important;
+}
+
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark) !important;
+  border-color: var(--primary-dark) !important;
+}
+
+.btn-outline-secondary {
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+/* Ensure all text is visible in dark theme */
+.dark-theme h1, .dark-theme h2, .dark-theme h3, .dark-theme h4, .dark-theme h5, .dark-theme h6 {
+  color: var(--text-color) !important;
+}
+
+.dark-theme p, .dark-theme span, .dark-theme div {
+  color: var(--text-color) !important;
+}
+
+.dark-theme .navbar-brand {
+  color: white !important;
+}
+
+.dark-theme .btn-outline-light {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: white !important;
+}
+
+/* Initialize light theme by default */
+body:not(.dark-theme):not(.light-theme) {
+  background-color: #fafafa !important;
+  color: #212121 !important;
+}
+
+body:not(.dark-theme):not(.light-theme) .card {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(63, 81, 181, 0.2) !important;
+  color: #212121 !important;
+}
+
+/* Bootstrap color utilities */
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-success {
+  background-color: #28a745 !important;
+}
+
+.bg-warning {
+  background-color: #ffc107 !important;
+  color: #212529 !important;
+}
+
+.bg-info {
+  background-color: #17a2b8 !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+.badge.bg-success {
+  background-color: #28a745 !important;
+  color: white !important;
+}
+
+.badge.bg-warning {
+  background-color: #ffc107 !important;
+  color: #212529 !important;
+}
+
+.badge.bg-info {
+  background-color: #17a2b8 !important;
+  color: white !important;
+}

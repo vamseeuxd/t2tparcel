@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container-fluid">
+    <span class="navbar-brand fw-bold">Dashboard</span>
+    <div class="d-flex">
+      <button class="btn btn-outline-light btn-sm me-2" (click)="toggleTheme()">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <button class="btn btn-outline-light btn-sm" (click)="logout()">
+        <i class="fas fa-user"></i> Logout
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid" style="padding-top: 80px;">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Parcel Tracking</h5>
+        </div>
+        <div class="card-body">
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                  <i class="fas fa-cube fa-2x mb-2"></i>
+                  <h3>15</h3>
+                  <p>Total Parcels</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card bg-success text-white">
+                <div class="card-body text-center">
+                  <i class="fas fa-check fa-2x mb-2"></i>
+                  <h3>8</h3>
+                  <p>Delivered</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card bg-warning text-secondary">
+                <div class="card-body text-center">
+                  <i class="fas fa-car fa-2x mb-2"></i>
+                  <h3>7</h3>
+                  <p>In Transit</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="list-group">
+            <div class="list-group-item" *ngFor="let parcel of parcels">
+              <div class="d-flex w-100 justify-content-between align-items-center">
+                <div class="flex-grow-1">
+                  <h6 class="mb-1">
+                    <i class="fas fa-tag me-2"></i>{{ parcel.id }}
+                  </h6>
+                  <p class="mb-1">
+                    <i class="fas fa-map me-2"></i>{{ parcel.destination }}
+                  </p>
+                  <small class="text-muted">
+                    <i class="fas fa-star me-2"></i>{{ parcel.type }}
+                  </small>
+                </div>
+                <div>
+                  <span class="badge" 
+                        [class]="parcel.status === 'Delivered' ? 'bg-success' : 
+                                 parcel.status === 'In Transit' ? 'bg-warning' : 'bg-info'">
+                    {{ parcel.status }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
