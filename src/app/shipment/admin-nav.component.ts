@@ -12,13 +12,16 @@ import { AuthService } from '../services/auth';
       <div class="d-flex justify-content-center">
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-outline-primary btn-sm" (click)="goToCustomerView()">
-            <i class="fas fa-user me-1"></i>Customer View
+            <i class="fas fa-user me-1"></i>Shipments
           </button>
           <button type="button" class="btn btn-outline-secondary btn-sm" (click)="goToAdminView()">
             <i class="fas fa-cog me-1"></i>Shipments
           </button>
           <button type="button" class="btn btn-outline-info btn-sm" (click)="goToEmployeeManagement()">
             <i class="fas fa-users me-1"></i>Employees
+          </button>
+          <button type="button" class="btn btn-outline-success btn-sm" (click)="goToIncome()">
+            <i class="fas fa-chart-line me-1"></i>Income
           </button>
         </div>
       </div>
@@ -41,5 +44,9 @@ export class AdminNavComponent {
 
   goToEmployeeManagement() {
     this.router.navigate(['/admin/employees']);
+  }
+
+  goToIncome() {
+    this.router.navigate(['/admin/income']);
   }
 }

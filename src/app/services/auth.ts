@@ -46,7 +46,7 @@ export class AuthService {
       
       // Create user profile with default customer role
       const userService = await import('../services/user.service').then(m => m.UserService);
-      const service = new userService(await import('@angular/fire/firestore').then(m => m.getFirestore()));
+      const service = new userService();
       
       await service.createUser({
         email: result.user.email!,

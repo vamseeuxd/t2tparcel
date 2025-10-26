@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Firestore, collection, addDoc, doc, updateDoc, onSnapshot, Timestamp, getDoc, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Shipment, ShipmentStatus, StatusUpdate } from '../models/shipment.model';
@@ -8,8 +8,9 @@ import { Shipment, ShipmentStatus, StatusUpdate } from '../models/shipment.model
 })
 export class ShipmentService {
   private collectionName = 'shipments';
+  private firestore = inject(Firestore);
 
-  constructor(private firestore: Firestore) {}
+  constructor() {}
 
   async createShipment(shipment: Omit<Shipment, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
     const shipmentData = {

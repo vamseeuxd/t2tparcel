@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Firestore, collection, addDoc, doc, updateDoc, deleteDoc, onSnapshot, Timestamp, getDoc, query, where, getDocs } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { User, UserRole } from '../models/user.model';
@@ -8,8 +8,9 @@ import { User, UserRole } from '../models/user.model';
 })
 export class UserService {
   private collectionName = 'users';
+  private firestore = inject(Firestore);
 
-  constructor(private firestore: Firestore) {}
+  constructor() {}
 
   async createUser(user: Omit<User, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
     const userData = {
