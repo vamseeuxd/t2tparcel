@@ -14,7 +14,7 @@ import { IncomeService, IncomeData } from '../services/income.service';
       <!-- Income Summary Cards -->
       <div class="row mb-4">
         <div class="col-md-4">
-          <div class="card bg-success text-white">
+          <div class="card bg-success text-white mb-2">
             <div class="card-body text-center">
               <h4>\${{ incomeData.totalRevenue.toFixed(2) }}</h4>
               <p class="mb-0">Total Revenue</p>
@@ -22,7 +22,7 @@ import { IncomeService, IncomeData } from '../services/income.service';
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card bg-info text-white">
+          <div class="card bg-info text-white mb-2">
             <div class="card-body text-center">
               <h4>{{ incomeData.totalShipments }}</h4>
               <p class="mb-0">Total Shipments</p>
@@ -30,7 +30,7 @@ import { IncomeService, IncomeData } from '../services/income.service';
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card bg-primary text-white">
+          <div class="card bg-primary text-white mb-2">
             <div class="card-body text-center">
               <h4>\${{ incomeData.averageRevenue.toFixed(2) }}</h4>
               <p class="mb-0">Average Revenue</p>
@@ -40,7 +40,7 @@ import { IncomeService, IncomeData } from '../services/income.service';
       </div>
 
       <!-- Date Range Filter -->
-      <div class="card mb-4">
+      <div class="card mb-4 mb-2">
         <div class="card-header">
           <h5 class="mb-0">Filter by Date Range</h5>
         </div>

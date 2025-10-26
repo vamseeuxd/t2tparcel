@@ -1,9 +1,12 @@
 .login-container {
-  min-height: 100vh;
-  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
   display: flex;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+  width: calc(100dvw - 0px);
+  position: relative;
+  min-height: calc(100dvh - 0px);
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 20px 0;
 }
 
 .dark-theme .login-container {

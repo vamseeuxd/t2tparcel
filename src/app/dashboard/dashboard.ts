@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ThemeService } from '../services/theme';
 import { AuthService } from '../services/auth';
 import { ShipmentListComponent } from '../shipment/shipment-list.component';
-import { AdminNavComponent } from '../shipment/admin-nav.component';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule, ShipmentListComponent, AdminNavComponent],
+  imports: [CommonModule, ShipmentListComponent],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
