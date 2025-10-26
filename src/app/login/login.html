@@ -1,30 +1,64 @@
-<div class="container-fluid vh-100 d-flex align-items-center justify-content-center">
-  <div class="row w-100">
-    <div class="col-md-4 mx-auto">
-      <div class="card shadow">
-        <div class="card-body p-5">
-          <div class="text-center mb-4">
-            <h2 class="text-primary fw-bold">Table to Table</h2>
-            <p class="text-muted">Domestic to International Shipping</p>
+<div class="login-container">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5 col-lg-4">
+        <div class="login-card">
+          <div class="text-center mb-3">
+            <h3 class="text-primary fw-bold mb-1">Table to Table</h3>
+            <p class="text-muted small mb-2">Domestic to International Shipping</p>
+            <h5 class="mb-0">{{ showResetPassword ? 'Reset Password' : (isSignup ? 'Sign Up' : 'Login') }}</h5>
           </div>
           
-          <form (ngSubmit)="onLogin()">
-            <div class="mb-3">
-              <label class="form-label">Username</label>
-              <input type="text" class="form-control" [(ngModel)]="username" name="username" required>
+          <div class="alert alert-danger py-2" *ngIf="error">{{ error }}</div>
+          <div class="alert alert-success py-2" *ngIf="success">{{ success }}</div>
+          
+          <form (ngSubmit)="showResetPassword ? onResetPassword() : onSubmit()" *ngIf="!showResetPassword">
+            <div class="mb-2">
+              <input type="email" class="form-control" [(ngModel)]="email" name="email" placeholder="Email" required>
             </div>
             
             <div class="mb-3">
-              <label class="form-label">Password</label>
-              <input type="password" class="form-control" [(ngModel)]="password" name="password" required>
+              <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Password" required>
             </div>
             
-            <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+            <button type="submit" class="btn btn-primary w-100 mb-2">
+              {{ isSignup ? 'Sign Up' : 'Login' }}
+            </button>
           </form>
           
-          <div class="text-center">
+          <form (ngSubmit)="onResetPassword()" *ngIf="showResetPassword">
+            <div class="mb-3">
+              <input type="email" class="form-control" [(ngModel)]="email" name="email" placeholder="Email" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 mb-2">
+              Send Reset Email
+            </button>
+          </form>
+          
+          <button class="btn btn-danger w-100 mb-2" (click)="onGoogleLogin()" *ngIf="!showResetPassword">
+            <i class="fab fa-google me-2"></i>Google
+          </button>
+          
+          <div class="text-center" *ngIf="!showResetPassword">
+            <button class="btn btn-link btn-sm p-1" (click)="toggleMode()">
+              {{ isSignup ? 'Login' : 'Sign Up' }}
+            </button>
+            <span *ngIf="!isSignup"> | </span>
+            <button class="btn btn-link btn-sm p-1" (click)="toggleResetPassword()" *ngIf="!isSignup">
+              Forgot Password?
+            </button>
+          </div>
+          
+          <div class="text-center" *ngIf="showResetPassword">
+            <button class="btn btn-link btn-sm" (click)="toggleResetPassword()">
+              Back to Login
+            </button>
+          </div>
+          
+          <div class="text-center mt-2">
             <button class="btn btn-outline-secondary btn-sm" (click)="toggleTheme()">
-              <i class="fas fa-moon"></i> Toggle Theme
+              <i class="fas fa-moon"></i>
             </button>
           </div>
         </div>

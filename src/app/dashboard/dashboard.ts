@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../services/theme';
+import { AuthService } from '../services/auth';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,10 +16,10 @@ export class DashboardComponent {
     { id: 'IND003', destination: 'London', status: 'Processing', type: 'International' }
   ];
 
-  constructor(private router: Router, public themeService: ThemeService) {}
+  constructor(public themeService: ThemeService, private authService: AuthService) {}
 
   logout(): void {
-    this.router.navigate(['/login']);
+    this.authService.logout();
   }
 
   toggleTheme(): void {

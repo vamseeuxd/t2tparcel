@@ -1,35 +1,53 @@
-.container-fluid {
-  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+.login-container {
   min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
 }
 
-.dark-theme .container-fluid {
+.dark-theme .login-container {
   background: linear-gradient(135deg, #1a1a2e, var(--primary-dark));
 }
 
-.card {
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(63, 81, 181, 0.2);
+.login-card {
+  background: var(--surface-color);
+  border-radius: 12px;
+  padding: 30px 25px;
+  box-shadow: 0 8px 25px rgba(63, 81, 181, 0.15);
+  border: 1px solid var(--border-color);
+  max-width: 400px;
+  margin: 0 auto;
 }
 
-.dark-theme .card {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+.dark-theme .login-card {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-.text-primary {
-  color: var(--primary-color) !important;
+.form-control {
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  font-size: 14px;
+}
+
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 10px;
 }
 
 .btn-primary {
   background: linear-gradient(45deg, var(--primary-color), var(--primary-dark)) !important;
   border: none !important;
-  border-radius: 8px;
-  padding: 12px;
-  font-weight: 600;
-  color: white !important;
 }
 
-.form-control {
+.btn-link {
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.alert {
   border-radius: 8px;
-  padding: 12px;
+  font-size: 13px;
 }
