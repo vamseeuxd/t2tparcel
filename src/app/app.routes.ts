@@ -4,6 +4,9 @@ import { DashboardComponent } from './dashboard/dashboard';
 import { CreateShipmentComponent } from './shipment/create-shipment.component';
 import { ShipmentDetailComponent } from './shipment/shipment-detail.component';
 import { AdminLayoutComponent } from './shipment/admin-layout.component';
+import { ManageEmployeeComponent } from './employee/manage-employee.component';
+import { AdminGuard } from './guards/admin.guard';
+import { EmployeeGuard } from './guards/employee.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -11,5 +14,6 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'shipment/create', component: CreateShipmentComponent },
   { path: 'shipment/:id', component: ShipmentDetailComponent },
-  { path: 'admin/shipments', component: AdminLayoutComponent }
+  { path: 'admin/shipments', component: AdminLayoutComponent, canActivate: [EmployeeGuard] },
+  { path: 'admin/employees', component: ManageEmployeeComponent, canActivate: [AdminGuard] }
 ];

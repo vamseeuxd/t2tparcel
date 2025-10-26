@@ -15,7 +15,10 @@ import { AuthService } from '../services/auth';
             <i class="fas fa-user me-1"></i>Customer View
           </button>
           <button type="button" class="btn btn-outline-secondary btn-sm" (click)="goToAdminView()">
-            <i class="fas fa-cog me-1"></i>Admin Panel
+            <i class="fas fa-cog me-1"></i>Shipments
+          </button>
+          <button type="button" class="btn btn-outline-info btn-sm" (click)="goToEmployeeManagement()">
+            <i class="fas fa-users me-1"></i>Employees
           </button>
         </div>
       </div>
@@ -34,5 +37,9 @@ export class AdminNavComponent {
 
   goToAdminView() {
     this.router.navigate(['/admin/shipments']);
+  }
+
+  goToEmployeeManagement() {
+    this.router.navigate(['/admin/employees']);
   }
 }

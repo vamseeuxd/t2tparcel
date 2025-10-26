@@ -43,6 +43,17 @@ export class AuthService {
   async registerWithEmail(email: string, password: string) {
     try {
       const result = await createUserWithEmailAndPassword(this.auth, email, password);
+      
+      // Create user profile with default customer role
+      const userService = await import('../services/user.service').then(m => m.UserService);
+      const service = new userService(await import('@angular/fire/firestore').then(m => m.getFirestore()));
+      
+      await service.createUser({
+        email: result.user.email!,
+        name: result.user.email!.split('@')[0],
+        role: 'customer'
+      });
+      
       await sendEmailVerification(result.user);
       throw new Error('Registration successful! Please check your email (including spam/junk folder) to verify your account before logging in.');
     } catch (error: any) {

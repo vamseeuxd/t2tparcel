@@ -56,8 +56,8 @@
             </div>
             <div class="col-md-6" *ngIf="shipment.estimatedDelivery">
               <h6>Delivery Information</h6>
-              <p class="mb-1"><strong>Estimated Delivery:</strong> {{ shipment.estimatedDelivery | date:'medium' }}</p>
-              <p class="mb-1" *ngIf="shipment.actualDelivery"><strong>Actual Delivery:</strong> {{ shipment.actualDelivery | date:'medium' }}</p>
+              <p class="mb-1"><strong>Estimated Delivery:</strong> {{ getDateValue(shipment.estimatedDelivery) | date:'medium' }}</p>
+              <p class="mb-1" *ngIf="shipment.actualDelivery"><strong>Actual Delivery:</strong> {{ getDateValue(shipment.actualDelivery) | date:'medium' }}</p>
             </div>
           </div>
           
@@ -80,7 +80,7 @@
               <div class="timeline-marker" [class]="getTimelineMarkerClass(update.status)"></div>
               <div class="timeline-content" [class.pb-0]="last">
                 <h6 class="mb-1">{{ STATUS_LABELS[update.status] }}</h6>
-                <small class="text-muted">{{ update.timestamp | date:'short' }}</small>
+                <small class="text-muted">{{ getDateValue(update.timestamp) | date:'short' }}</small>
                 <p class="mb-0 small" *ngIf="update.notes">{{ update.notes }}</p>
               </div>
             </div>

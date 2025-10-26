@@ -88,6 +88,13 @@ export class ShipmentDetailComponent implements OnInit, OnDestroy {
     ];
   }
 
+  getDateValue(value: any): Date | null {
+    if (!value) return null;
+    if (value instanceof Date) return value;
+    if (value.toDate && typeof value.toDate === 'function') return value.toDate();
+    return new Date(value);
+  }
+
   goBack() {
     this.router.navigate(['/dashboard']);
   }
