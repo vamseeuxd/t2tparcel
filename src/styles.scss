@@ -153,3 +153,50 @@ body:not(.dark-theme):not(.light-theme) .card {
   background-color: #17a2b8 !important;
   color: white !important;
 }
+
+/* Timeline styles */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-color);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -23px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  background: var(--surface-color);
+}
+
+.timeline-marker.completed {
+  background: #28a745;
+  border-color: #28a745;
+}
+
+.timeline-marker.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.timeline-item.active .timeline-content h6 {
+  color: var(--primary-color);
+  font-weight: bold;
+}

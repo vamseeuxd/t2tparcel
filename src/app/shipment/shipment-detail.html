@@ -1,0 +1,102 @@
+<div class="container mt-4" *ngIf="shipment">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>Shipment Details</h3>
+    <button class="btn btn-outline-secondary" (click)="goBack()">
+      <i class="fas fa-arrow-left me-2"></i>Back
+    </button>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Shipment #{{ shipment.id?.substring(0, 8) }}</h5>
+          <span class="badge fs-6" [class]="getStatusBadgeClass(shipment.status)">
+            {{ STATUS_LABELS[shipment.status] }}
+          </span>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <h6>Customer Information</h6>
+              <p class="mb-1"><strong>Name:</strong> {{ shipment.customerName }}</p>
+              <p class="mb-1"><strong>Email:</strong> {{ shipment.customerEmail }}</p>
+              <p class="mb-1"><strong>Phone:</strong> {{ shipment.customerPhone }}</p>
+              <p class="mb-3"><strong>Request Method:</strong> {{ shipment.requestMethod | titlecase }}</p>
+            </div>
+            <div class="col-md-6">
+              <h6>Shipment Details</h6>
+              <p class="mb-1"><strong>Weight:</strong> {{ shipment.weight }}kg</p>
+              <p class="mb-1"><strong>Dimensions:</strong> {{ shipment.dimensions }}</p>
+              <p class="mb-1"><strong>Minimum Charge:</strong> ${{ shipment.minimumCharge }}</p>
+              <p class="mb-3" *ngIf="shipment.totalAmount"><strong>Total Amount:</strong> ${{ shipment.totalAmount }}</p>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <h6>From Address</h6>
+              <p class="mb-3">{{ shipment.fromAddress }}</p>
+            </div>
+            <div class="col-md-6">
+              <h6>To Address</h6>
+              <p class="mb-3">{{ shipment.toAddress }}</p>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <h6>Description</h6>
+            <p>{{ shipment.description }}</p>
+          </div>
+          
+          <div class="row" *ngIf="shipment.flightNumber || shipment.estimatedDelivery">
+            <div class="col-md-6" *ngIf="shipment.flightNumber">
+              <h6>Flight Information</h6>
+              <p class="mb-1"><strong>Flight Number:</strong> {{ shipment.flightNumber }}</p>
+            </div>
+            <div class="col-md-6" *ngIf="shipment.estimatedDelivery">
+              <h6>Delivery Information</h6>
+              <p class="mb-1"><strong>Estimated Delivery:</strong> {{ shipment.estimatedDelivery | date:'medium' }}</p>
+              <p class="mb-1" *ngIf="shipment.actualDelivery"><strong>Actual Delivery:</strong> {{ shipment.actualDelivery | date:'medium' }}</p>
+            </div>
+          </div>
+          
+          <div *ngIf="shipment.status === 'rejected' && shipment.rejectionReason">
+            <h6 class="text-danger">Rejection Reason</h6>
+            <p class="text-danger">{{ shipment.rejectionReason }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h6 class="mb-0">Status Timeline</h6>
+        </div>
+        <div class="card-body">
+          <div class="timeline">
+            <div class="timeline-item" *ngFor="let update of getStatusHistory(); let last = last" [class.active]="update.status === shipment.status">
+              <div class="timeline-marker" [class]="getTimelineMarkerClass(update.status)"></div>
+              <div class="timeline-content" [class.pb-0]="last">
+                <h6 class="mb-1">{{ STATUS_LABELS[update.status] }}</h6>
+                <small class="text-muted">{{ update.timestamp | date:'short' }}</small>
+                <p class="mb-0 small" *ngIf="update.notes">{{ update.notes }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4 text-center" *ngIf="!shipment && !loading">
+  <h5 class="text-muted">Shipment not found</h5>
+</div>
+
+<div class="container mt-4 text-center" *ngIf="loading">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>

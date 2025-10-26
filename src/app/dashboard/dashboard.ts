@@ -2,20 +2,16 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../services/theme';
 import { AuthService } from '../services/auth';
+import { ShipmentListComponent } from '../shipment/shipment-list.component';
+import { AdminNavComponent } from '../shipment/admin-nav.component';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule],
+  imports: [CommonModule, ShipmentListComponent, AdminNavComponent],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
 export class DashboardComponent {
-  parcels = [
-    { id: 'IND001', destination: 'New York', status: 'In Transit', type: 'International' },
-    { id: 'DOM002', destination: 'Mumbai', status: 'Delivered', type: 'Domestic' },
-    { id: 'IND003', destination: 'London', status: 'Processing', type: 'International' }
-  ];
-
   constructor(public themeService: ThemeService, private authService: AuthService) {}
 
   logout(): void {
